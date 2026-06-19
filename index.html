@@ -363,21 +363,13 @@
 <section id="contact">
   <div class="wrap">
     <h2>Получить расчёт</h2>
-    <p class="lead">Опишите задачу или пришлите схему — подготовлю коммерческое предложение.</p>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="row"><div class="ci">📞</div><div><div class="lbl">Телефон</div><a class="val" href="tel:+79281602155">+7 (928) 160-21-55</a></div></div>
-        <div class="row"><div class="ci">🏢</div><div><div class="lbl">Офис (Глобус)</div><a class="val" href="tel:+78633089090,102">+7 (863) 308-90-90 <span style="color:var(--muted);font-weight:400;font-size:14px">доб. 102</span></a></div></div>
-        <div class="row"><div class="ci">✉️</div><div><div class="lbl">Email</div><a class="val" href="mailto:r.kolenkin@globe-it.ru">r.kolenkin@globe-it.ru</a></div></div>
-        <div class="row"><div class="ci">📍</div><div><div class="lbl">География работ</div><div class="val">Россия · выезд на объект</div></div></div>
-      </div>
-      <form id="leadForm">
-        <div class="field"><label>Как к вам обращаться</label><input type="text" name="name" required placeholder="Имя"></div>
-        <div class="field"><label>Телефон или email</label><input type="text" name="contact" required placeholder="+7… или mail@…"></div>
-        <div class="field"><label>Задача</label><textarea name="msg" placeholder="Например: нужен шкаф управления двумя насосами 5,5 кВт с АВР"></textarea></div>
-        <button type="submit" class="btn btn-primary">Отправить заявку</button>
-        <div class="form-ok" id="formOk">✅ Спасибо! Заявка готова к отправке.</div>
-      </form>
+    <p class="lead">Опишите задачу или пришлите схему — подготовлю коммерческое предложение. Звоните или пишите напрямую.</p>
+    <div class="contact-info" style="max-width:560px">
+      <div class="row"><div class="ci">👤</div><div><div class="lbl">Контактное лицо</div><div class="val">Коленкин Роман</div></div></div>
+      <div class="row"><div class="ci">📞</div><div><div class="lbl">Телефон</div><a class="val" href="tel:+79281602155">+7 (928) 160-21-55</a></div></div>
+      <div class="row"><div class="ci">🏢</div><div><div class="lbl">Офис (Глобус)</div><a class="val" href="tel:+78633089090,102">+7 (863) 308-90-90 <span style="color:var(--muted);font-weight:400;font-size:14px">доб. 102</span></a></div></div>
+      <div class="row"><div class="ci">✉️</div><div><div class="lbl">Email</div><a class="val" href="mailto:r.kolenkin@globe-it.ru">r.kolenkin@globe-it.ru</a></div></div>
+      <div class="row"><div class="ci">📍</div><div><div class="lbl">География работ</div><div class="val">Россия · выезд на объект</div></div></div>
     </div>
   </div>
 </section>
@@ -407,18 +399,6 @@
   const menu = document.getElementById('menu');
   burger.addEventListener('click', () => menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
-
-  // Форма (без бэкенда — показываем подтверждение; подключите свою отправку)
-  const form = document.getElementById('leadForm');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const f = e.target;
-    const text = `Заявка с сайта:%0AИмя: ${f.name.value}%0AКонтакт: ${f.contact.value}%0AЗадача: ${f.msg.value}`;
-    // Вариант: открыть письмо. Замените на отправку в Telegram/CRM при необходимости.
-    window.location.href = `mailto:r.kolenkin@globe-it.ru?subject=Заявка на шкаф автоматизации&body=${text}`;
-    document.getElementById('formOk').style.display = 'block';
-    f.reset();
-  });
 
   // Лайтбокс для референсов
   const refs = Array.from(document.querySelectorAll('#refGrid .ref'));
