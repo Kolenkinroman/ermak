@@ -163,6 +163,21 @@
   form .btn-primary{width:100%}
   .form-ok{display:none;text-align:center;padding:30px;color:var(--accent);font-weight:600}
 
+  /* LIGHTBOX */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(6,9,13,.92);backdrop-filter:blur(4px);
+      display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:82vh;border-radius:12px;border:1px solid var(--line);cursor:default;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .lb-cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:var(--text);font-size:16px;font-weight:600}
+  .lb-x{position:absolute;top:22px;right:26px;width:44px;height:44px;border-radius:11px;border:1px solid var(--line);
+        background:rgba(21,27,36,.8);color:var(--text);font-size:22px;cursor:pointer;line-height:1}
+  .lb-x:hover{border-color:var(--accent);color:var(--accent)}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;
+          border:1px solid var(--line);background:rgba(21,27,36,.8);color:var(--text);font-size:24px;cursor:pointer}
+  .lb-nav:hover{border-color:var(--accent);color:var(--accent)}
+  .lb-prev{left:24px}.lb-next{right:24px}
+  @media(max-width:560px){.lb-nav{display:none}}
+
   /* FOOTER */
   footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px}
   .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
@@ -344,6 +359,15 @@
   </div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-x" id="lbX" aria-label="Закрыть">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Назад">&#8249;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Вперёд">&#8250;</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
 <script>
   // Год в футере
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -364,6 +388,37 @@
     window.location.href = `mailto:r.kolenkin@globe-it.ru?subject=Заявка на шкаф автоматизации&body=${text}`;
     document.getElementById('formOk').style.display = 'block';
     f.reset();
+  });
+
+  // Лайтбокс для референсов
+  const refs = Array.from(document.querySelectorAll('#refGrid .ref'));
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  let cur = 0;
+
+  function showLb(i){
+    cur = (i + refs.length) % refs.length;
+    const r = refs[cur];
+    const img = r.querySelector('img');
+    if(!img) return;
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCap.textContent = r.querySelector('.meta h4')?.textContent || '';
+    lb.classList.add('open');
+  }
+  function closeLb(){ lb.classList.remove('open'); }
+
+  refs.forEach((r, i) => r.addEventListener('click', () => showLb(i)));
+  document.getElementById('lbX').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); showLb(cur - 1); });
+  document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); showLb(cur + 1); });
+  lb.addEventListener('click', e => { if(e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLb();
+    if(e.key === 'ArrowLeft') showLb(cur - 1);
+    if(e.key === 'ArrowRight') showLb(cur + 1);
   });
 </script>
 </body>
