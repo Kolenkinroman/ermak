@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Страница не найдена — Ермак</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    background:#0c0f14;color:#e7edf5;min-height:100vh;
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+    background-image:radial-gradient(800px 400px at 70% -10%,rgba(54,211,153,.14),transparent 60%);
+  }
+  .wrap{max-width:520px}
+  .code{font-size:clamp(64px,16vw,128px);font-weight:900;line-height:1;letter-spacing:-3px;
+    background:linear-gradient(120deg,#36d399,#2dd4bf);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{font-size:clamp(22px,4vw,30px);margin:14px 0 10px;font-weight:800}
+  p{color:#94a3b8;font-size:17px;margin-bottom:30px}
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  a.btn{padding:14px 26px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;transition:.2s}
+  .primary{background:#36d399;color:#06231a}
+  .primary:hover{background:#2dd4bf}
+  .ghost{border:1px solid #232c39;color:#e7edf5}
+  .ghost:hover{border-color:#36d399;color:#36d399}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">404</div>
+    <h1>Такой страницы нет</h1>
+    <p>Возможно, ссылка устарела или была введена с ошибкой. Вернитесь на главную или свяжитесь с нами.</p>
+    <div class="btns">
+      <a class="btn primary" href="/">На главную</a>
+      <a class="btn ghost" href="tel:+79281602155">Позвонить</a>
+    </div>
+  </div>
+</body>
+</html>
