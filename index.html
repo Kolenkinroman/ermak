@@ -363,6 +363,20 @@
   .brand:hover{border-color:rgba(54,211,153,.45);color:var(--accent);transform:translateY(-2px)}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110042865', 'ym');
+
+    ym(110042865, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/110042865" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
 
@@ -652,6 +666,11 @@
     }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => io.observe(el));
   }
+
+  // Цель Яндекс.Метрики: клик по телефону
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+    a.addEventListener('click', function(){ if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'call'); });
+  });
 </script>
 
 <!-- Виджет Битрикс24 (CRM-кнопка / онлайн-чат Глобус) -->
