@@ -122,7 +122,7 @@
     <a href="#" class="logo">
       <span class="mark" aria-hidden="true"><img src="favicon-120.png?v=2" alt="Ермак" width="40" height="40"></span>Ермак</a>
     <nav class="nav-links" id="menu">
-      <a href="#services">Услуги</a>
+      <span class="has-drop"><a href="#services">Услуги</a><span class="drop"><a href="shkafy-upravleniya/">Шкафы управления</a><a href="elektroshchity/">Электрощиты</a><a href="asu-tp/">АСУ ТП и ПЛК</a><a href="shchity-ventilyacii/">Щиты вентиляции и ИТП</a><a href="bmk/">Блочно-модульные контейнеры</a><a href="metalloobrabotka/">Металлообработка</a></span></span>
       <a href="#process">Этапы</a>
       <a href="#references">Референсы</a>
       <a href="#why">Почему мы</a>
@@ -136,15 +136,20 @@
 </header>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero-split">
   <div class="hero-grid"></div>
   <div class="wrap">
-    <div class="pill"><span class="dot"></span> Ермак · Новочеркасск · производство и поставка</div>
-    <h1>Шкафы автоматизации <span>под ключ</span> — от подбора до объекта</h1>
-    <p>Продаём и поставляем электрощиты, шкафы управления и АСУ ТП любой сложности. Заводское производство, качественная элементная база, документация и гарантия.</p>
-    <div class="btn-row">
-      <a href="#contact"><button class="btn btn-primary">Обсудить проект</button></a>
-      <a href="#references"><button class="btn btn-ghost">Смотреть работы</button></a>
+    <div class="hero-copy">
+      <div class="pill"><span class="dot"></span> Ермак · Новочеркасск · производство и поставка</div>
+      <h1>Шкафы автоматизации <span>под ключ</span> — от подбора до объекта</h1>
+      <p>Продаём и поставляем электрощиты, шкафы управления и АСУ ТП любой сложности. Заводское производство, качественная элементная база, документация и гарантия.</p>
+      <div class="btn-row">
+        <a href="#contact"><button class="btn btn-primary">Обсудить проект</button></a>
+        <a href="#references"><button class="btn btn-ghost">Смотреть работы</button></a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <picture><source srcset="img/ref-lineup.webp" type="image/webp"><img src="img/ref-lineup.jpg" alt="Ряд шкафов управления производства Ермак" width="1248" height="936" fetchpriority="high"></picture>
     </div>
   </div>
 </section>
@@ -382,9 +387,26 @@
   <div class="lb-cap" id="lbCap"></div>
 </div>
 
+<!-- Плавающие кнопки -->
+<a href="tel:+79281602155" class="fab fab-call" aria-label="Позвонить" title="Позвонить">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+<button class="fab fab-top" id="fabTop" aria-label="Наверх" title="Наверх">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <script>
   // Год в футере
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Кнопка «наверх»
+  const fabTop = document.getElementById('fabTop');
+  if(fabTop){
+    const toggleTop = () => fabTop.classList.toggle('show', window.scrollY > 600);
+    window.addEventListener('scroll', toggleTop, {passive:true});
+    fabTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    toggleTop();
+  }
 
   // Мобильное меню
   const burger = document.getElementById('burger');
@@ -406,7 +428,7 @@
     if(!img) return;
     lbImg.src = img.currentSrc || img.src;
     lbImg.alt = img.alt;
-    lbCap.textContent = r.querySelector('.meta h4')?.textContent || '';
+    lbCap.textContent = r.getAttribute('data-title') || '';
     lb.classList.add('open');
   }
   function closeLb(){ lb.classList.remove('open'); }
