@@ -196,13 +196,14 @@
   /* Выпадающее меню «Услуги» */
   .has-drop{position:relative;display:inline-flex;align-items:center}
   .has-drop>a::after{content:"▾";font-size:11px;margin-left:5px;opacity:.7}
+  .has-drop::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);width:250px;height:16px}
   .drop{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);min-width:240px;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:8px;display:none;flex-direction:column;gap:2px;box-shadow:0 24px 48px -24px rgba(0,0,0,.75)}
-  .has-drop:hover .drop{display:flex}
+  .has-drop:hover .drop,.drop:hover{display:flex}
   .drop a{padding:10px 12px;border-radius:8px;font-size:14px;color:var(--muted);white-space:nowrap}
   .drop a:hover{background:var(--card);color:var(--accent)}
   @media(max-width:880px){
     .has-drop{display:block}
-    .has-drop>a::after{display:none}
+    .has-drop>a::after,.has-drop::after{display:none}
     .drop{position:static;transform:none;display:flex;border:none;box-shadow:none;background:none;padding:6px 0 0 14px;min-width:0}
   }
 
