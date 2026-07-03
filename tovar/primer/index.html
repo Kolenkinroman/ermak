@@ -18,7 +18,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Шкаф управления насосной станцией ШУН",
-  "image": "https://ermak.pro/img/ref-6vfd.jpg",
+  "image": "https://ermak.pro/img/tovar-shun.png",
   "description": "Шкаф управления насосной станцией с частотным регулированием, панелью оператора и защитами. Собственное производство, гарантия 24 месяца.",
   "brand": {"@type":"Brand","name":"Ермак"},
   "category": "Шкафы управления",
@@ -55,15 +55,9 @@
     <div class="draft-note">⚠ Образец карточки товара — замените фото, текст и характеристики на реальные</div>
     <div class="product">
 
-      <!-- Галерея -->
+      <!-- Фото -->
       <div class="pgallery">
-        <div class="pmain"><img id="pmain" src="../../img/ref-6vfd.jpg" alt="Шкаф управления насосной станцией ШУН"></div>
-        <div class="pthumbs" id="pthumbs">
-          <img src="../../img/ref-6vfd.jpg" alt="Общий вид" class="active">
-          <img src="../../img/ref-wiring.jpg" alt="Монтаж">
-          <img src="../../img/ref-busbar.jpg" alt="Силовая часть">
-          <img src="../../img/ref-red-hmi.jpg" alt="Панель оператора">
-        </div>
+        <div class="pmain" style="aspect-ratio:3/4;background:#fff"><img src="../../img/tovar-shun.png" alt="Шкаф управления насосной станцией ШУН" style="object-fit:contain"></div>
       </div>
 
       <!-- Информация -->
@@ -129,13 +123,6 @@
   const menu = document.getElementById('menu');
   burger.addEventListener('click', () => menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
-  // смена главного фото по клику на превью
-  const pmain = document.getElementById('pmain');
-  document.querySelectorAll('#pthumbs img').forEach(t => t.addEventListener('click', () => {
-    pmain.src = t.src;
-    document.querySelectorAll('#pthumbs img').forEach(x => x.classList.remove('active'));
-    t.classList.add('active');
-  }));
   const reveal = document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){ reveal.forEach(e=>e.classList.add('in')); }
   else { const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12}); reveal.forEach(e=>io.observe(e)); }
