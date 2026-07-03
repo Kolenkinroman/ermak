@@ -372,6 +372,16 @@
   .draft-note{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--warn);border:1px solid rgba(251,191,36,.4);background:rgba(251,191,36,.08);padding:8px 14px;border-radius:10px;margin-bottom:24px;font-weight:600}
   @media(max-width:760px){.product{grid-template-columns:1fr;gap:28px}}
 
+  /* таблица модификаций */
+  .modtable{width:100%;border-collapse:collapse;margin:6px 0 8px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .modtable th,.modtable td{padding:13px 16px;text-align:left;font-size:15px;border-bottom:1px solid var(--line)}
+  .modtable th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px;background:var(--card)}
+  .modtable tbody tr:last-child td{border-bottom:none}
+  .modtable tbody tr:hover{background:rgba(47,128,237,.05)}
+  .modtable td:first-child{color:var(--muted);font-size:14px}
+  .modtable td:last-child{font-weight:700;color:var(--accent)}
+  @media(max-width:560px){.modtable th,.modtable td{padding:10px 12px;font-size:14px}}
+
   /* прайс-ориентир */
   .price-table{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
   .price-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line)}
