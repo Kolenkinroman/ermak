@@ -72,7 +72,7 @@
   .hero h1 span{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero p{color:var(--muted);font-size:19px;max-width:600px;margin:24px 0 34px}
   .btn-row{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{padding:15px 28px;border-radius:12px;font-weight:700;font-size:16px;transition:.2s;cursor:pointer;border:none}
+  .btn{display:inline-block;padding:15px 28px;border-radius:12px;font-weight:700;font-size:16px;transition:.2s;cursor:pointer;border:none;text-align:center}
   .btn-primary{background:var(--accent);color:#ffffff}
   .btn-primary:hover{background:var(--accent-2);transform:translateY(-2px)}
   .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
@@ -218,6 +218,7 @@
   @media(max-width:880px){
     .fab-call{display:flex}
     .fab-top{bottom:76px}
+    footer{padding-bottom:120px}
   }
 
   /* PROCESS */
@@ -338,7 +339,8 @@
   .catalog-list{display:flex;flex-direction:column;gap:14px;max-width:780px}
   .pcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .2s}
   .pcard[open]{border-color:rgba(47,128,237,.4)}
-  .pcard summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;padding:16px 20px}
+  .pcard summary{list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:18px;padding:16px 20px}
+  .pcard-chev{margin-top:2px}
   .pcard summary::-webkit-details-marker{display:none}
   .pcard-thumb{width:76px;height:76px;object-fit:contain;background:#fff;border-radius:10px;flex-shrink:0;padding:6px}
   .pcard-main{flex:1;min-width:0}
