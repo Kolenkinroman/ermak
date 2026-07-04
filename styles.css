@@ -382,6 +382,8 @@
   .modtable tbody tr:hover{background:rgba(47,128,237,.05)}
   .modtable td:first-child{color:var(--muted);font-size:14px}
   .modtable td:last-child{font-weight:700;color:var(--accent)}
+  .modtable th:nth-child(3),.modtable td:nth-child(3){width:1%;white-space:nowrap;text-align:center}
+  .modtable td:nth-child(3){font-weight:700}
   @media(max-width:560px){.modtable th,.modtable td{padding:10px 12px;font-size:14px}}
   .modwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   @media(max-width:560px){.modwrap .modtable{min-width:540px}}
