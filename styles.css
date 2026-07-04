@@ -375,18 +375,32 @@
   @media(max-width:760px){.product{grid-template-columns:1fr;gap:28px}}
 
   /* таблица модификаций */
-  .modtable{width:100%;border-collapse:collapse;margin:6px 0 8px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-  .modtable th,.modtable td{padding:13px 16px;text-align:left;font-size:15px;border-bottom:1px solid var(--line)}
-  .modtable th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px;background:var(--card)}
+  .modtable{width:100%;border-collapse:separate;border-spacing:0;margin:6px 0 8px;border:1px solid var(--line);border-radius:12px}
+  .modtable th,.modtable td{padding:14px 18px;text-align:left;font-size:15px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+  .modtable th{color:var(--muted);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.6px;background:var(--card)}
   .modtable tbody tr:last-child td{border-bottom:none}
-  .modtable tbody tr:hover{background:rgba(47,128,237,.05)}
-  .modtable td:first-child{color:var(--muted);font-size:14px}
-  .modtable td:last-child{font-weight:700;color:var(--accent)}
-  .modtable th:nth-child(3),.modtable td:nth-child(3){width:1%;white-space:nowrap;text-align:center}
+  .modtable tbody tr:nth-child(even){background:rgba(255,255,255,.018)}
+  .modtable tbody tr:hover{background:rgba(47,128,237,.08)}
+  .modtable td:first-child{color:var(--muted);font-size:13px}
+  .modtable th:nth-child(n+3),.modtable td:nth-child(n+3){text-align:right}
+  .modtable th:nth-child(3),.modtable td:nth-child(3){text-align:center;width:1%;white-space:nowrap}
   .modtable td:nth-child(3){font-weight:700}
-  @media(max-width:560px){.modtable th,.modtable td{padding:10px 12px;font-size:14px}}
+  .modtable td:last-child{font-weight:800;color:var(--accent);font-size:16px}
   .modwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  @media(max-width:560px){.modwrap .modtable{min-width:540px}}
+
+  @media(max-width:760px){
+    .modwrap{overflow-x:visible}
+    .modtable{border:none;border-spacing:0 10px;margin:0 0 -10px}
+    .modtable thead{display:none}
+    .modtable tbody tr,.modtable tbody tr:nth-child(even){display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 16px}
+    .modtable td{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;text-align:right}
+    .modtable td:first-child{padding-top:12px}
+    .modtable td:last-child{border-bottom:none;padding-bottom:12px;margin-top:2px}
+    .modtable td::before{content:attr(data-th);color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;text-align:left}
+    .modtable td:nth-child(2){font-weight:700;color:var(--text)}
+    .modtable td:nth-child(3){width:auto;white-space:normal;text-align:right}
+    .modtable td:last-child{font-size:17px}
+  }
 
   /* особенности и применение */
   .pfeatures{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
