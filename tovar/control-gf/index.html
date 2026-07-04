@@ -27,7 +27,7 @@
 <meta property="og:title" content="Шкаф управления пожаротушения Control GF — 18 модификаций — Ермак">
 <meta property="og:description" content="АВР и управление задвижкой для пожарных насосов — управление двумя или тремя насосами 0,75–15 кВт: контроллер с дисплеем, IP54. 18 типоразмеров, гарантия 24 месяца.">
 <meta property="og:image" content="https://ermak.pro/img/og-cover.jpg">
-<link rel="stylesheet" href="../../styles.css?v=12">
+<link rel="stylesheet" href="../../styles.css?v=13">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -110,7 +110,39 @@
           <span>IP54</span>
           <span>Гарантия 24 месяца</span>
         </div>
-        <div class="pprice"><span class="val">от 143 000 ₽</span><span class="cur">— цена зависит от мощности и числа насосов, см. таблицу</span></div>
+        <div class="configurator reveal">
+          <div class="cfg-grid">
+            <div class="cfg-field">
+              <label for="cfgPumps">Количество насосов</label>
+              <div class="cfg-select-wrap"><select id="cfgPumps">
+                <option value="2">2 насоса</option>
+                <option value="3">3 насоса</option>
+              </select></div>
+            </div>
+            <div class="cfg-field">
+              <label for="cfgPower">Мощность насоса</label>
+              <div class="cfg-select-wrap"><select id="cfgPower">
+                <option data-a2="20001" data-p2="143000" data-t2="1,6 А" data-a3="20201" data-p3="146000" data-t3="1,6 А">0,75 кВт</option>
+                <option data-a2="20002" data-p2="144000" data-t2="2,5 А" data-a3="20202" data-p3="149000" data-t3="2,5 А">1,1 кВт</option>
+                <option data-a2="20003" data-p2="145000" data-t2="4 А" data-a3="20203" data-p3="150000" data-t3="4 А">1,5 кВт</option>
+                <option data-a2="20004" data-p2="146000" data-t2="6,3 А" data-a3="20204" data-p3="153000" data-t3="6,3 А">3 кВт</option>
+                <option data-a2="20005" data-p2="147000" data-t2="10 А" data-a3="20205" data-p3="155000" data-t3="10 А">4 кВт</option>
+                <option data-a2="20006" data-p2="149000" data-t2="14 А" data-a3="20206" data-p3="162000" data-t3="14 А">5,5 кВт</option>
+                <option data-a2="20007" data-p2="150000" data-t2="18 А" data-a3="20207" data-p3="163000" data-t3="18 А">7,5 кВт</option>
+                <option data-a2="20008" data-p2="154000" data-t2="23 А" data-a3="20208" data-p3="167000" data-t3="23 А">11 кВт</option>
+                <option data-a2="20009" data-p2="158000" data-t2="32 А" data-a3="20209" data-p3="175000" data-t3="32 А">15 кВт</option>
+              </select></div>
+            </div>
+          </div>
+          <div class="cfg-result">
+            <div class="cfg-sku">Артикул <b id="cfgArt">20001</b> · ток насоса <b id="cfgTok">1,6 А</b></div>
+            <div class="cfg-price" id="cfgPrice">143 000 ₽</div>
+          </div>
+          <div class="btn-row" style="margin-top:18px">
+            <a href="../../?sku=20001#contact" id="cfgCtaLink"><button class="btn btn-primary">Получить расчёт на эту комплектацию</button></a>
+            <a href="tel:+79281602155"><button class="btn btn-ghost">Позвонить</button></a>
+          </div>
+        </div>
 
         <table class="specs">
           <tr><td>Назначение</td><td>Управление пожарными насосами (АВР + управление задвижкой)</td></tr>
@@ -225,6 +257,31 @@
   if(!('IntersectionObserver' in window)){ reveal.forEach(e=>e.classList.add('in')); }
   else { const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12}); reveal.forEach(e=>io.observe(e)); }
   document.querySelectorAll('a[href^="tel:"]').forEach(a=>a.addEventListener('click',()=>{ if(typeof ym!=='undefined') ym(110042865,'reachGoal','call'); }));
+
+  // Конфигуратор модификации
+  (function(){
+    const pumps = document.getElementById("cfgPumps");
+    const power = document.getElementById("cfgPower");
+    const art = document.getElementById("cfgArt");
+    const tok = document.getElementById("cfgTok");
+    const price = document.getElementById("cfgPrice");
+    const ctaLink = document.getElementById("cfgCtaLink");
+    if(!pumps || !power) return;
+    function fmt(n){ return Number(n).toLocaleString("ru-RU") + " ₽"; }
+    function update(){
+      const opt = power.selectedOptions[0];
+      const n = pumps.value;
+      const a = opt.dataset["a"+n], p = opt.dataset["p"+n], t = opt.dataset["t"+n];
+      art.textContent = a;
+      tok.textContent = t;
+      price.textContent = fmt(p);
+      if(ctaLink) ctaLink.setAttribute("href", "../../?sku=" + a + "#contact");
+      if(typeof ym !== "undefined") ym(110042865, "reachGoal", "configurator");
+    }
+    pumps.addEventListener("change", update);
+    power.addEventListener("change", update);
+  })();
+
 </script>
 </body>
 </html>

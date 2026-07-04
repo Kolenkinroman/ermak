@@ -366,6 +366,20 @@
   .pprice{display:flex;align-items:baseline;gap:10px;margin-bottom:22px}
   .pprice .val{font-size:30px;font-weight:900;color:var(--accent)}
   .pprice .cur{color:var(--muted);font-size:15px}
+
+  /* конфигуратор модификации */
+  .configurator{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:0 0 22px}
+  .cfg-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+  .cfg-field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px;font-weight:600}
+  .cfg-select-wrap{position:relative}
+  .cfg-select-wrap::after{content:"▾";position:absolute;right:15px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:13px;pointer-events:none}
+  .configurator select{width:100%;padding:12px 38px 12px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--line);color:var(--text);font-size:15px;font-family:inherit;cursor:pointer;appearance:none;-webkit-appearance:none}
+  .configurator select:focus{outline:none;border-color:var(--accent)}
+  .cfg-result{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;padding-top:16px;border-top:1px solid var(--line)}
+  .cfg-sku{color:var(--muted);font-size:14px}
+  .cfg-sku b{color:var(--text);font-weight:700}
+  .cfg-price{font-size:28px;font-weight:900;color:var(--accent);white-space:nowrap}
+  @media(max-width:560px){.cfg-grid{grid-template-columns:1fr}}
   .specs{width:100%;border-collapse:collapse;margin:8px 0 26px}
   .specs td{padding:11px 0;font-size:15px;border-bottom:1px solid var(--line);vertical-align:top}
   .specs tr:last-child td{border-bottom:none}

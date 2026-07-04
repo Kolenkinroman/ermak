@@ -27,7 +27,7 @@
 <meta property="og:title" content="Шкаф управления водоснабжения Control GL — 16 модификаций (0,75–15 кВт) — Ермак">
 <meta property="og:description" content="Повышение и поддержание давления воды в водоснабжении дома и на объекте — управление двумя или тремя насосами 0,75–15 кВт: контроллер с дисплеем, IP54. 16 типоразмеров, гарантия 24 месяца.">
 <meta property="og:image" content="https://ermak.pro/img/tovar-control-gl.png">
-<link rel="stylesheet" href="../../styles.css?v=12">
+<link rel="stylesheet" href="../../styles.css?v=13">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -107,7 +107,38 @@
           <span>Гарантия 24 месяца</span>
           <span>Собственное производство</span>
         </div>
-        <div class="pprice"><span class="val">от 68 000 ₽</span><span class="cur">— цена зависит от мощности, см. таблицу</span></div>
+        <div class="configurator reveal">
+          <div class="cfg-grid">
+            <div class="cfg-field">
+              <label for="cfgPumps">Количество насосов</label>
+              <div class="cfg-select-wrap"><select id="cfgPumps">
+                <option value="2">2 насоса</option>
+                <option value="3">3 насоса</option>
+              </select></div>
+            </div>
+            <div class="cfg-field">
+              <label for="cfgPower">Мощность насоса</label>
+              <div class="cfg-select-wrap"><select id="cfgPower">
+                <option data-a2="25000241" data-p2="68000" data-t2="2,1 А" data-a3="25000341" data-p3="79000" data-t3="2,1 А">0,75 кВт</option>
+                <option data-a2="25000242" data-p2="69000" data-t2="3,8 А" data-a3="25000342" data-p3="81000" data-t3="3,8 А">1,5 кВт</option>
+                <option data-a2="25000243" data-p2="71000" data-t2="5,1 А" data-a3="25000343" data-p3="85000" data-t3="5,1 А">2,2 кВт</option>
+                <option data-a2="25000244" data-p2="78000" data-t2="9 А" data-a3="25000344" data-p3="91000" data-t3="9 А">4 кВт</option>
+                <option data-a2="25000245" data-p2="83000" data-t2="13 А" data-a3="25000345" data-p3="97000" data-t3="13 А">5,5 кВт</option>
+                <option data-a2="25000246" data-p2="90000" data-t2="17 А" data-a3="25000346" data-p3="110000" data-t3="17 А">7,5 кВт</option>
+                <option data-a2="25000247" data-p2="101000" data-t2="25 А" data-a3="25000347" data-p3="124000" data-t3="25 А">11 кВт</option>
+                <option data-a2="25000248" data-p2="117000" data-t2="32 А" data-a3="25000348" data-p3="150000" data-t3="32 А">15 кВт</option>
+              </select></div>
+            </div>
+          </div>
+          <div class="cfg-result">
+            <div class="cfg-sku">Артикул <b id="cfgArt">25000241</b> · ток насоса <b id="cfgTok">2,1 А</b></div>
+            <div class="cfg-price" id="cfgPrice">68 000 ₽</div>
+          </div>
+          <div class="btn-row" style="margin-top:18px">
+            <a href="../../?sku=25000241#contact" id="cfgCtaLink"><button class="btn btn-primary">Получить расчёт на эту комплектацию</button></a>
+            <a href="tel:+79281602155"><button class="btn btn-ghost">Позвонить</button></a>
+          </div>
+        </div>
 
         <table class="specs">
           <tr><td>Назначение</td><td>Водоснабжение: повышение и поддержание давления воды (2 или 3 насоса)</td></tr>
@@ -220,6 +251,31 @@
   if(!('IntersectionObserver' in window)){ reveal.forEach(e=>e.classList.add('in')); }
   else { const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12}); reveal.forEach(e=>io.observe(e)); }
   document.querySelectorAll('a[href^="tel:"]').forEach(a=>a.addEventListener('click',()=>{ if(typeof ym!=='undefined') ym(110042865,'reachGoal','call'); }));
+
+  // Конфигуратор модификации
+  (function(){
+    const pumps = document.getElementById("cfgPumps");
+    const power = document.getElementById("cfgPower");
+    const art = document.getElementById("cfgArt");
+    const tok = document.getElementById("cfgTok");
+    const price = document.getElementById("cfgPrice");
+    const ctaLink = document.getElementById("cfgCtaLink");
+    if(!pumps || !power) return;
+    function fmt(n){ return Number(n).toLocaleString("ru-RU") + " ₽"; }
+    function update(){
+      const opt = power.selectedOptions[0];
+      const n = pumps.value;
+      const a = opt.dataset["a"+n], p = opt.dataset["p"+n], t = opt.dataset["t"+n];
+      art.textContent = a;
+      tok.textContent = t;
+      price.textContent = fmt(p);
+      if(ctaLink) ctaLink.setAttribute("href", "../../?sku=" + a + "#contact");
+      if(typeof ym !== "undefined") ym(110042865, "reachGoal", "configurator");
+    }
+    pumps.addEventListener("change", update);
+    power.addEventListener("change", update);
+  })();
+
 </script>
 </body>
 </html>

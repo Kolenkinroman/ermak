@@ -106,7 +106,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=13">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
 <!-- Yandex.Metrika counter -->
@@ -498,6 +498,15 @@
   document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
     a.addEventListener('click', function(){ if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'call'); });
   });
+
+  // Подстановка артикула из конфигуратора карточки товара (?sku=...)
+  (function(){
+    const sku = new URLSearchParams(location.search).get('sku');
+    const msg = document.getElementById('f-msg');
+    if(sku && msg && !msg.value){
+      msg.value = 'Интересует модификация с артикулом ' + sku + ' — прошу рассчитать стоимость и сроки.';
+    }
+  })();
 
   // Отправка формы заявки (FormSubmit AJAX, без перезагрузки)
   const leadForm = document.getElementById('leadForm');
