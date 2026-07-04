@@ -393,6 +393,16 @@
   .applist li::before{content:"";position:absolute;left:0;top:9px;width:13px;height:2px;background:var(--accent);border-radius:2px}
   @media(max-width:560px){.applist{grid-template-columns:1fr;gap:10px}}
 
+  /* тизер готового товара на главной */
+  .teaser{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px;overflow:hidden}
+  .teaser-img{border-radius:14px;overflow:hidden;background:#fff;aspect-ratio:3/4}
+  .teaser-img img{width:100%;height:100%;object-fit:contain;display:block}
+  .teaser h3{font-size:24px;font-weight:900;letter-spacing:-.3px;margin-bottom:10px}
+  .teaser .tsub{color:var(--muted);font-size:15px;margin-bottom:16px;max-width:560px}
+  .teaser .tprice{color:var(--accent);font-weight:900;font-size:28px;margin-bottom:18px}
+  .teaser .tprice span{color:var(--muted);font-weight:400;font-size:14px;margin-left:8px}
+  @media(max-width:760px){.teaser{grid-template-columns:1fr;padding:24px;text-align:left}.teaser-img{max-width:220px;margin:0 auto 8px}}
+
   /* прайс-ориентир */
   .price-table{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
   .price-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line)}
