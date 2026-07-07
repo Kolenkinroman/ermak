@@ -117,11 +117,11 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110042865', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110470566', 'ym');
 
-    ym(110042865, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    ym(110470566, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/110042865" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/110470566" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
@@ -505,7 +505,7 @@
 
   // Цель Яндекс.Метрики: клик по телефону
   document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
-    a.addEventListener('click', function(){ if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'call'); });
+    a.addEventListener('click', function(){ if(typeof ym !== 'undefined') ym(110470566, 'reachGoal', 'call'); });
   });
 
   // Подстановка артикула из конфигуратора карточки товара (?sku=...)
@@ -536,7 +536,7 @@
           leadForm.querySelectorAll('.field').forEach(f => f.style.display = 'none');
           btn.style.display = 'none';
           ok.style.display = 'block';
-          if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'lead');
+          if(typeof ym !== 'undefined') ym(110470566, 'reachGoal', 'lead');
         } else { throw new Error('bad response'); }
       } catch(err){
         btn.disabled = false; btn.textContent = original;
