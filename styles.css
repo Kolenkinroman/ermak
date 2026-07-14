@@ -211,20 +211,17 @@
   .fab{position:fixed;left:20px;z-index:60;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--bg-soft);color:var(--text);align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 24px -8px rgba(0,0,0,.6);transition:.2s;text-decoration:none}
   .fab:hover{border-color:var(--accent);color:var(--accent)}
   .fab svg{width:22px;height:22px}
-  .fab-top{bottom:132px;display:none}
+  .fab-top{bottom:76px;display:none}
   .fab-top.show{display:flex}
   .fab-call{bottom:20px;display:none;background:var(--accent);color:#fff;border-color:var(--accent)}
   .fab-call:hover{color:#fff;opacity:.92}
-  .fab-tg{bottom:20px;display:flex;background:#2AABEE;border-color:#2AABEE;color:#fff}
-  .fab-tg:hover{color:#fff;opacity:.9}
-  .fab-max{bottom:76px;display:flex;background:#7B4BFF;border-color:#7B4BFF;color:#fff;font-weight:800;font-size:12px;letter-spacing:.4px}
+  .fab-max{bottom:20px;display:flex;background:#7B4BFF;border-color:#7B4BFF;color:#fff;font-weight:800;font-size:12px;letter-spacing:.4px}
   .fab-max:hover{color:#fff;opacity:.9}
   @media(max-width:880px){
     .fab-call{display:flex}
-    .fab-tg{bottom:76px}
-    .fab-max{bottom:132px}
-    .fab-top{bottom:188px}
-    footer{padding-bottom:240px}
+    .fab-max{bottom:76px}
+    .fab-top{bottom:132px}
+    footer{padding-bottom:180px}
   }
 
   /* PROCESS */
