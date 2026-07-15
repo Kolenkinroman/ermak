@@ -107,7 +107,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="styles.css?v=17">
+<link rel="stylesheet" href="styles.css?v=18">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
 <!-- Yandex.Metrika counter -->
@@ -133,6 +133,7 @@
     <nav class="nav-links" id="menu">
       <span class="has-drop"><a href="#services">Услуги</a><span class="drop"><a href="shkafy-upravleniya/">Шкафы управления</a><a href="elektroshchity/">Электрощиты</a><a href="asu-tp/">АСУ ТП и ПЛК</a><a href="shchity-ventilyacii/">Щиты вентиляции и ИТП</a><a href="bmk/">Блочно-модульные контейнеры</a><a href="metalloobrabotka/">Металлообработка</a></span></span>
       <a href="produkciya/">Продукция</a>
+      <a href="#podbor">Подбор шкафа</a>
       <a href="#references">Референсы</a>
       <a href="#why">Почему мы</a>
       <a href="#faq">FAQ</a>
@@ -250,6 +251,121 @@
           <a href="tovar/control-gl/"><button class="btn btn-primary">Смотреть цены и модификации</button></a>
           <a href="produkciya/"><button class="btn btn-ghost">Вся продукция</button></a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ / ПОДБОР ШКАФА -->
+<section id="podbor">
+  <div class="wrap">
+    <div class="eyebrow reveal">Помощь с выбором</div>
+    <h2 class="reveal">Подобрать шкаф за минуту</h2>
+    <p class="lead reveal">Ответьте на 3 вопроса — покажем подходящее решение и сориентируем по цене. Без звонков и обязательств.</p>
+
+    <div class="quiz reveal" id="quiz" role="form" aria-label="Подбор шкафа">
+      <div class="quiz-bar"><i id="quizBar"></i></div>
+      <div class="quiz-meta"><span>Шаг <b id="quizNum">1</b> из <b id="quizTot">3</b></span><span id="quizLabel">Тип задачи</span></div>
+
+      <!-- Шаг 1: тип задачи -->
+      <div class="quiz-step active" data-step="1">
+        <div class="quiz-q">Что нужно автоматизировать?</div>
+        <div class="quiz-hint">Выберите основную задачу объекта.</div>
+        <div class="quiz-opts">
+          <button type="button" class="quiz-opt" data-goto="pump" data-val="Водоснабжение / повышение давления">
+            <span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7S6 9.3 6 14a6 6 0 0 0 12 0c0-4.7-6-11.3-6-11.3z"/></svg></span>
+            <span>Водоснабжение<small>Повышение и поддержание давления</small></span>
+          </button>
+          <button type="button" class="quiz-opt" data-goto="fire" data-val="Пожаротушение / пожарные насосы">
+            <span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s5 4.5 5 9a5 5 0 0 1-10 0c0-1.7.7-3.3 1.6-4.6C9 8 12 2 12 2z"/><path d="M12 22a3 3 0 0 0 3-3c0-2-3-4-3-4s-3 2-3 4a3 3 0 0 0 3 3z"/></svg></span>
+            <span>Пожаротушение<small>Пожарные насосы, АВР, задвижка</small></span>
+          </button>
+          <button type="button" class="quiz-opt" data-goto="vent" data-val="Вентиляция / ИТП / отопление">
+            <span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.4"/><path d="M12 9.6c1.8-3.6 4-4.8 5.8-3S18 12 12 12M12 9.6c-3.9-.8-6-2-6.3-4.1s3-2.1 6.3 6.5M12 14.4c-1.8 3.6-4 4.8-5.8 3S6 12 12 12M12 14.4c3.9.8 6 2 6.3 4.1s-3 2.1-6.3-6.5"/></svg></span>
+            <span>Вентиляция и ИТП<small>ОВиК, приточки, тепловые пункты</small></span>
+          </button>
+          <button type="button" class="quiz-opt" data-goto="plc" data-val="АСУ ТП / ПЛК / диспетчеризация">
+            <span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></span>
+            <span>АСУ ТП и ПЛК<small>Контроллеры, SCADA, диспетчеризация</small></span>
+          </button>
+          <button type="button" class="quiz-opt" data-goto="power" data-val="Электрораспределение / ВРУ / АВР / учёт">
+            <span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-13h-7z"/></svg></span>
+            <span>Электрораспределение<small>ВРУ, АВР, щиты учёта и распределения</small></span>
+          </button>
+          <button type="button" class="quiz-opt" data-goto="other" data-val="Другое оборудование">
+            <span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h4l2-3h6l2 3h4M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"/></svg></span>
+            <span>Другое<small>Конвейеры, освещение, спецзадача</small></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Шаг 2A: насосы (для водоснабжения/пожаротушения) -->
+      <div class="quiz-step" data-step="2" data-branch="pump fire">
+        <div class="quiz-q">Сколько насосов в группе?</div>
+        <div class="quiz-hint">Основные рабочие насосы, без учёта резерва «на бумаге».</div>
+        <div class="quiz-opts">
+          <button type="button" class="quiz-opt" data-next data-key="pumps" data-val="2 насоса">2 насоса</button>
+          <button type="button" class="quiz-opt" data-next data-key="pumps" data-val="3 насоса">3 насоса</button>
+          <button type="button" class="quiz-opt" data-next data-key="pumps" data-val="4 и более">4 и более</button>
+          <button type="button" class="quiz-opt" data-next data-key="pumps" data-val="Пока не знаю">Пока не знаю</button>
+        </div>
+      </div>
+
+      <!-- Шаг 3A: мощность -->
+      <div class="quiz-step" data-step="3" data-branch="pump fire">
+        <div class="quiz-q">Мощность одного насоса?</div>
+        <div class="quiz-hint">Ориентировочно, по паспорту насоса.</div>
+        <div class="quiz-opts">
+          <button type="button" class="quiz-opt" data-result data-key="power" data-val="до 4 кВт">до 4 кВт</button>
+          <button type="button" class="quiz-opt" data-result data-key="power" data-val="4–15 кВт">4–15 кВт</button>
+          <button type="button" class="quiz-opt" data-result data-key="power" data-val="более 15 кВт">более 15 кВт</button>
+          <button type="button" class="quiz-opt" data-result data-key="power" data-val="Не знаю">Не знаю</button>
+        </div>
+      </div>
+
+      <!-- Шаг 2B: масштаб (для остальных задач) -->
+      <div class="quiz-step" data-step="2" data-branch="vent plc power other">
+        <div class="quiz-q">Масштаб задачи?</div>
+        <div class="quiz-hint">Поможет прикинуть комплектацию.</div>
+        <div class="quiz-opts">
+          <button type="button" class="quiz-opt" data-next data-key="scale" data-val="Один шкаф">Один шкаф</button>
+          <button type="button" class="quiz-opt" data-next data-key="scale" data-val="Несколько шкафов">Несколько шкафов</button>
+          <button type="button" class="quiz-opt" data-next data-key="scale" data-val="Комплекс на объект">Комплекс на объект</button>
+          <button type="button" class="quiz-opt" data-next data-key="scale" data-val="Пока не определился">Пока не определился</button>
+        </div>
+      </div>
+
+      <!-- Шаг 3B: что входит -->
+      <div class="quiz-step" data-step="3" data-branch="vent plc power other">
+        <div class="quiz-q">Что входит в задачу?</div>
+        <div class="quiz-hint">Можно уточнить позже — это не обязательство.</div>
+        <div class="quiz-opts">
+          <button type="button" class="quiz-opt" data-result data-key="scope" data-val="Только поставка шкафа">Только поставка шкафа</button>
+          <button type="button" class="quiz-opt" data-result data-key="scope" data-val="Шкаф + пусконаладка">Шкаф + пусконаладка</button>
+          <button type="button" class="quiz-opt" data-result data-key="scope" data-val="Под ключ с проектом">Под ключ с проектом</button>
+          <button type="button" class="quiz-opt" data-result data-key="scope" data-val="Нужна консультация">Нужна консультация</button>
+        </div>
+      </div>
+
+      <!-- Результат -->
+      <div class="quiz-step" data-step="result">
+        <div class="quiz-result">
+          <div class="qr-ico" id="qrIco"></div>
+          <div class="qr-kicker">Рекомендуем</div>
+          <div class="qr-title" id="qrTitle"></div>
+          <div class="qr-desc" id="qrDesc"></div>
+          <div class="qr-price" id="qrPrice" hidden></div>
+          <div class="pfeatures" id="qrFeatures"></div>
+          <div class="qr-btns">
+            <a id="qrPrimary" href="#contact"><button type="button" class="btn btn-primary">Получить расчёт</button></a>
+            <a id="qrSecondary" href="produkciya/"><button type="button" class="btn btn-ghost">Подробнее</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-nav">
+        <button type="button" class="quiz-back" id="quizBack" hidden>← Назад</button>
+        <span></span>
       </div>
     </div>
   </div>
@@ -398,7 +514,7 @@
 <footer>
   <div class="wrap foot">
     <div>© <span id="year"></span> Ермак — шкафы автоматизации на заказ<br>Новочеркасск, ул. Просвещения, 155А · <a href="tel:+79281602155">+7 (928) 160-21-55</a></div>
-    <div><a href="#services">Услуги</a> · <a href="#process">Этапы</a> · <a href="#references">Референсы</a> · <a href="#faq">FAQ</a> · <a href="#contact">Контакты</a> · <a href="politika-konfidencialnosti/">Политика конфиденциальности</a></div>
+    <div><a href="#services">Услуги</a> · <a href="#podbor">Подбор шкафа</a> · <a href="#process">Этапы</a> · <a href="#references">Референсы</a> · <a href="#faq">FAQ</a> · <a href="#contact">Контакты</a> · <a href="politika-konfidencialnosti/">Политика конфиденциальности</a></div>
   </div>
 </footer>
 
@@ -497,6 +613,152 @@
       msg.value = 'Интересует модификация с артикулом ' + sku + ' — прошу рассчитать стоимость и сроки.';
     }
   })();
+</script>
+
+<!-- Квиз «Подобрать шкаф» -->
+<script>
+(function(){
+  const quiz = document.getElementById('quiz');
+  if(!quiz) return;
+  const steps  = Array.from(quiz.querySelectorAll('.quiz-step'));
+  const bar    = document.getElementById('quizBar');
+  const numEl  = document.getElementById('quizNum');
+  const label  = document.getElementById('quizLabel');
+  const meta    = quiz.querySelector('.quiz-meta');
+  const back   = document.getElementById('quizBack');
+  const labels = {'1':'Тип задачи','2':'Параметры','3':'Детали','result':'Готово'};
+
+  let branch = null;
+  const answers = {};
+  const history = [];
+
+  const ICON = {
+    water:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7S6 9.3 6 14a6 6 0 0 0 12 0c0-4.7-6-11.3-6-11.3z"/></svg>',
+    fire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s5 4.5 5 9a5 5 0 0 1-10 0c0-1.7.7-3.3 1.6-4.6C9 8 12 2 12 2z"/></svg>',
+    vent:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.4"/><path d="M12 9.6c1.8-3.6 4-4.8 5.8-3S18 12 12 12M12 14.4c-1.8 3.6-4 4.8-5.8 3S6 12 12 12"/></svg>',
+    plc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg>',
+    bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-13h-7z"/></svg>',
+    box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="11" rx="1"/><path d="M7.5 7v11M12 7v11M16.5 7v11"/></svg>'
+  };
+
+  // Итоговые рекомендации
+  function build(){
+    const p = answers.pumps, w = answers.power;
+    const outOfRange = p === '4 и более' || w === 'более 15 кВт';
+
+    if(branch === 'pump'){
+      if(!outOfRange) return {
+        ico:ICON.water, kicker:'Готовое решение — в наличии',
+        title:'Шкаф управления водоснабжения Control GL',
+        desc:'Повышение и поддержание давления воды — управление 2–3 насосами 0,75–15 кВт, контроллер с дисплеем, IP54. 16 модификаций готовы к отгрузке.',
+        price:'от 68 000 ₽', priceNote:'цена зависит от мощности',
+        feat:['16 типоразмеров','2 или 3 насоса','IP54','Гарантия 24 мес'],
+        sec:{href:'tovar/control-gl/', label:'Цены и модификации'}
+      };
+      return customPump('водоснабжения');
+    }
+    if(branch === 'fire'){
+      if(!outOfRange) return {
+        ico:ICON.fire, kicker:'Готовое решение — в наличии',
+        title:'Шкаф управления пожаротушения Control GF',
+        desc:'АВР и управление задвижкой для пожарных насосов — 2–3 насоса 0,75–15 кВт, контроллер с дисплеем, IP54. 18 модификаций.',
+        price:'от 143 000 ₽', priceNote:'цена зависит от комплектации',
+        feat:['18 типоразмеров','АВР + задвижка','IP54','Гарантия 24 мес'],
+        sec:{href:'tovar/control-gf/', label:'Цены и модификации'}
+      };
+      return customPump('пожаротушения');
+    }
+    if(branch === 'vent') return {
+      ico:ICON.vent, kicker:'Изготовим под задачу',
+      title:'Щиты автоматики ИТП и вентиляции',
+      desc:'Автоматика тепловых пунктов, приточно-вытяжных установок и систем ОВиК. Подберём схему и комплектацию под ваш объект.',
+      feat:['Под ваш объект','Документация по ГОСТ','Пусконаладка','Гарантия 24 мес'],
+      sec:{href:'shchity-ventilyacii/', label:'Об услуге'}
+    };
+    if(branch === 'plc') return {
+      ico:ICON.plc, kicker:'Изготовим под задачу',
+      title:'Шкафы АСУ ТП на базе ПЛК',
+      desc:'Шкафы автоматики на промышленных контроллерах: диспетчеризация, SCADA, программирование под ваш техпроцесс.',
+      feat:['ПЛК ведущих брендов','SCADA / диспетчеризация','Проект и наладка','Гарантия 24 мес'],
+      sec:{href:'asu-tp/', label:'Об услуге'}
+    };
+    if(branch === 'power') return {
+      ico:ICON.bolt, kicker:'Изготовим под задачу',
+      title:'Электрощиты: ВРУ, АВР, учёт',
+      desc:'Вводно-распределительные устройства, шкафы АВР, щиты распределения и учёта. Заводская сборка по ГОСТ с протоколами испытаний.',
+      feat:['Сборка по ГОСТ','Протоколы испытаний','Любая конфигурация','Гарантия 24 мес'],
+      sec:{href:'elektroshchity/', label:'Об услуге'}
+    };
+    return { // other
+      ico:ICON.box, kicker:'Изготовим под задачу',
+      title:'Шкаф управления под вашу задачу',
+      desc:'Конвейеры, освещение, спецоборудование — соберём шкаф управления с релейной логикой или частотным приводом под ваш процесс.',
+      feat:['Индивидуальный проект','Релейная логика / ЧРП','Документация','Гарантия 24 мес'],
+      sec:{href:'shkafy-upravleniya/', label:'Об услуге'}
+    };
+  }
+  function customPump(kind){
+    return {
+      ico: kind==='пожаротушения'?ICON.fire:ICON.water, kicker:'Изготовим под задачу',
+      title:'Шкаф управления насосами '+kind,
+      desc:'Для вашей мощности и числа насосов соберём шкаф индивидуально: устройства плавного пуска или частотное регулирование, нужная степень резервирования.',
+      feat:['Индивидуальный проект','ЧРП / плавный пуск','Документация','Гарантия 24 мес'],
+      sec:{href:'shkafy-upravleniya/', label:'Об услуге'}
+    };
+  }
+
+  function stepEl(step, br){
+    return steps.find(s => s.dataset.step === step &&
+      (!s.dataset.branch || s.dataset.branch.split(' ').indexOf(br) !== -1));
+  }
+  function show(el){
+    steps.forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    const st = el.dataset.step;
+    const idx = st === 'result' ? 3 : parseInt(st, 10);
+    numEl.textContent = Math.min(idx, 3);
+    label.textContent = labels[st] || '';
+    bar.style.width = (Math.min(idx, 3) / 3 * 100) + '%';
+    meta.style.visibility = st === 'result' ? 'hidden' : 'visible';
+    back.hidden = history.length === 0;
+    if(history.length) el.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+  function go(el){ history.push(quiz.querySelector('.quiz-step.active')); show(el); }
+
+  function renderResult(){
+    const r = build();
+    document.getElementById('qrIco').innerHTML = r.ico;
+    quiz.querySelector('.qr-kicker').textContent = r.kicker;
+    document.getElementById('qrTitle').textContent = r.title;
+    document.getElementById('qrDesc').textContent = r.desc;
+    const priceEl = document.getElementById('qrPrice');
+    if(r.price){ priceEl.hidden = false; priceEl.innerHTML = r.price + '<span>' + (r.priceNote||'') + '</span>'; }
+    else priceEl.hidden = true;
+    document.getElementById('qrFeatures').innerHTML = r.feat.map(f => '<span>'+f+'</span>').join('');
+    const sec = document.getElementById('qrSecondary');
+    sec.href = r.sec.href;
+    sec.querySelector('button').textContent = r.sec.label;
+    if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'quiz_done', {task: answers.task});
+  }
+
+  quiz.querySelectorAll('.quiz-opt').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      if(opt.dataset.key) answers[opt.dataset.key] = opt.dataset.val;
+      if(opt.dataset.goto){ branch = opt.dataset.goto; answers.task = opt.dataset.val; go(stepEl('2', branch)); return; }
+      if(opt.hasAttribute('data-next')){ go(stepEl('3', branch)); return; }
+      if(opt.hasAttribute('data-result')){ renderResult(); go(stepEl('result', branch)); }
+    });
+  });
+
+  back.addEventListener('click', function(){
+    if(!history.length) return;
+    show(history.pop());
+  });
+
+  document.getElementById('qrPrimary').addEventListener('click', function(){
+    if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'quiz_lead', {task: answers.task});
+  });
+})();
 </script>
 
 <!-- Виджет Битрикс24 (CRM-кнопка / онлайн-чат Глобус) -->
