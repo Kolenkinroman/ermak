@@ -620,7 +620,30 @@
 
   // Открытие CRM-формы заявки Битрикс24 (пункт crmform виджета)
   (function(){
-    function openLead(e){
+    const MARK = 'Заявка из подбора шкафа на сайте:'; // признак авто-сводки квиза
+    function applyVal(ta, v){ // Vue — нужен нативный сеттер + событие input
+      const setter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
+      setter.call(ta, v);
+      ta.dispatchEvent(new Event('input', {bubbles:true}));
+      ta.dispatchEvent(new Event('change', {bubbles:true}));
+    }
+    // Синхронизация поля «Задача»: text!=='' — вписать сводку квиза; text==='' — убрать устаревшую сводку,
+    // но не трогать текст, введённый клиентом вручную (форма Битрикса помнит ввод между открытиями).
+    function syncComment(text){
+      let n = 0;
+      (function poll(){
+        const ta = document.querySelector('.b24-form textarea');
+        if(ta){
+          const cur = ta.value || '';
+          const isAuto = cur.indexOf(MARK) === 0;
+          if(text){ if(cur === '' || isAuto) applyVal(ta, text); }
+          else if(isAuto){ applyVal(ta, ''); }
+          return;
+        }
+        if(n++ < 30){ setTimeout(poll, 250); }
+      })();
+    }
+    function openLead(e, comment){
       if(e) e.preventDefault();
       let tries = 0;
       (function attempt(){
@@ -628,6 +651,7 @@
         if(item){
           item.click();
           if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'lead_form_open');
+          syncComment(comment || '');
           return;
         }
         if(tries++ < 20){ setTimeout(attempt, 300); return; }
@@ -635,9 +659,11 @@
         if(c) c.scrollIntoView({behavior:'smooth'});
       })();
     }
-    document.querySelectorAll('.js-zayavka, #qrPrimary').forEach(function(el){
-      el.addEventListener('click', openLead);
+    document.querySelectorAll('.js-zayavka').forEach(function(el){
+      el.addEventListener('click', function(e){ openLead(e, ''); });
     });
+    const qp = document.getElementById('qrPrimary'); // из квиза — со сводкой подбора
+    if(qp) qp.addEventListener('click', function(e){ openLead(e, window.__quizComment || ''); });
   })();
 </script>
 
@@ -764,6 +790,15 @@
     const sec = document.getElementById('qrSecondary');
     sec.href = r.sec.href;
     sec.querySelector('button').textContent = r.sec.label;
+    // Сводка подбора — уйдёт в комментарий CRM-формы, чтобы менеджер видел запрос
+    const parts = ['Заявка из подбора шкафа на сайте:'];
+    parts.push('• Задача: ' + (answers.task || '—'));
+    if(answers.pumps) parts.push('• Насосов: ' + answers.pumps);
+    if(answers.power) parts.push('• Мощность насоса: ' + answers.power);
+    if(answers.scale) parts.push('• Масштаб: ' + answers.scale);
+    if(answers.scope) parts.push('• Состав работ: ' + answers.scope);
+    parts.push('• Рекомендация: ' + r.title);
+    window.__quizComment = parts.join('\n');
     if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'quiz_done', {task: answers.task});
   }
 
