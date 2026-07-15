@@ -8,11 +8,29 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteCond %{HTTP:X-Forwarded-Proto} =http
 RewriteRule ^(.*)$ https://ermak.pro/$1 [R=301,L]
 
+# Сжатие текстовых ресурсов
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/javascript application/x-javascript application/json application/xml image/svg+xml application/rss+xml
+</IfModule>
+
+# Срок жизни кэша (mod_expires)
 <IfModule mod_expires.c>
 ExpiresActive On
 ExpiresByType image/jpeg "access plus 30 days"
 ExpiresByType image/png "access plus 30 days"
 ExpiresByType image/webp "access plus 30 days"
 ExpiresByType image/x-icon "access plus 30 days"
+ExpiresByType image/svg+xml "access plus 30 days"
 ExpiresByType text/css "access plus 7 days"
+ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+# Дубль кэша через mod_headers (переживает прокси лучше, чем mod_expires)
+<IfModule mod_headers.c>
+<FilesMatch "\.(webp|jpe?g|png|gif|ico|svg)$">
+Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "public, max-age=604800"
+</FilesMatch>
 </IfModule>
