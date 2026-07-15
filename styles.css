@@ -47,6 +47,13 @@
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
   .burger span{width:24px;height:2px;background:var(--text);border-radius:2px}
 
+  /* Навигационная цепочка (хлебные крошки) */
+  .crumbs .wrap{padding-top:16px;padding-bottom:2px;font-size:13px;color:var(--muted)}
+  .crumbs a{color:var(--muted);transition:.2s}
+  .crumbs a:hover{color:var(--accent)}
+  .crumbs .sep{margin:0 8px;color:var(--line)}
+  .crumbs .cur{color:var(--text)}
+
   /* HERO */
   .hero{
     position:relative;padding:96px 0 88px;
