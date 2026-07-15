@@ -156,8 +156,8 @@
       <h1>Шкафы автоматизации <span>под ключ</span> — от подбора до объекта</h1>
       <p>Продаём и поставляем электрощиты, шкафы управления и АСУ ТП любой сложности. Заводское производство, качественная элементная база, документация и гарантия.</p>
       <div class="btn-row">
-        <a href="#contact" class="js-zayavka"><button class="btn btn-primary">Обсудить проект</button></a>
-        <a href="#references"><button class="btn btn-ghost">Смотреть работы</button></a>
+        <a href="#contact" class="btn btn-primary js-zayavka">Обсудить проект</a>
+        <a href="#references" class="btn btn-ghost">Смотреть работы</a>
       </div>
     </div>
     <div class="hero-media">
@@ -251,8 +251,8 @@
         </div>
         <div class="tprice">от 68 000 ₽<span>цена зависит от мощности</span></div>
         <div class="btn-row">
-          <a href="tovar/control-gl/"><button class="btn btn-primary">Смотреть цены и модификации</button></a>
-          <a href="produkciya/"><button class="btn btn-ghost">Вся продукция</button></a>
+          <a href="tovar/control-gl/" class="btn btn-primary">Смотреть цены и модификации</a>
+          <a href="produkciya/" class="btn btn-ghost">Вся продукция</a>
         </div>
       </div>
     </div>
@@ -360,8 +360,8 @@
           <div class="qr-price" id="qrPrice" hidden></div>
           <div class="pfeatures" id="qrFeatures"></div>
           <div class="qr-btns">
-            <a id="qrPrimary" href="#contact"><button type="button" class="btn btn-primary">Получить расчёт</button></a>
-            <a id="qrSecondary" href="produkciya/"><button type="button" class="btn btn-ghost">Подробнее</button></a>
+            <a id="qrPrimary" href="#contact" class="btn btn-primary">Получить расчёт</a>
+            <a id="qrSecondary" href="produkciya/" class="btn btn-ghost">Подробнее</a>
           </div>
         </div>
       </div>
@@ -792,7 +792,7 @@
     document.getElementById('qrFeatures').innerHTML = r.feat.map(f => '<span>'+f+'</span>').join('');
     const sec = document.getElementById('qrSecondary');
     sec.href = r.sec.href;
-    sec.querySelector('button').textContent = r.sec.label;
+    sec.textContent = r.sec.label;
     // Сводка подбора — уйдёт в комментарий CRM-формы, чтобы менеджер видел запрос
     const parts = ['Заявка из подбора шкафа на сайте:'];
     parts.push('• Задача: ' + (answers.task || '—'));
