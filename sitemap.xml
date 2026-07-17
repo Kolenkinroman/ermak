@@ -20,7 +20,13 @@
   </url>
   <url>
     <loc>https://ermak.pro/tovar/control-gf/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ermak.pro/tovar/hydro-gf/</loc>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
