@@ -1,0 +1,49 @@
+name: Deploy ermak.pro
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .deploy-trigger
+  workflow_dispatch:
+
+concurrency:
+  group: ermak-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Upload changed files to RU-CENTER
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Get website files
+        uses: actions/checkout@v6
+
+      - name: Sync with RU-CENTER
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          server-dir: ermak.pro/docs/
+          state-name: .ftp-deploy-sync-state.json
+          log-level: minimal
+          timeout: 60000
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/tmp/**
+            gcm-diagnose.log
+            .deploy-trigger
+            .htaccess
+            .htaccess.hosting
+            .well-known/**
