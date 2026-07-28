@@ -21,7 +21,7 @@
 <link rel="alternate icon" href="favicon.ico?v=2">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
 <link rel="preload" as="image" href="img/ref-lineup.webp" type="image/webp" media="(min-width: 561px)" fetchpriority="high">
-<meta name="description" content="Производство и поставка шкафов автоматизации, АСУ ТП, электрощитов и БМК в Ростове-на-Дону и Новочеркасске. Собственное производство, гарантия 24 месяца, поставка по России.">
+<meta name="description" content="Шкафы автоматизации, АСУ ТП, электрощиты и БМК от производителя в Ростове-на-Дону. Гарантия 24 месяца, поставка и пусконаладка по России.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ermak.pro/">
 <meta name="theme-color" content="#0c0f14">
@@ -150,7 +150,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="styles.css?v=24">
+<link rel="stylesheet" href="styles.css?v=28">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
 <!-- Yandex.Metrika counter -->
@@ -193,11 +193,11 @@
   <div class="wrap">
     <div class="hero-copy">
       <div class="pill"><span class="dot"></span> Ермак · Ростов-на-Дону · производство и поставка</div>
-      <h1>Шкафы автоматизации <span>под ключ</span> — от подбора до объекта</h1>
-      <p>Продаём и поставляем электрощиты, шкафы управления и АСУ ТП любой сложности. Заводское производство, качественная элементная база, документация и гарантия.</p>
+      <h1 id="heroTitle">Шкафы автоматизации <span>под ключ</span> — от подбора до объекта</h1>
+      <p id="heroText">Продаём и поставляем электрощиты, шкафы управления и АСУ ТП любой сложности. Заводское производство, качественная элементная база, документация и гарантия.</p>
       <div class="btn-row">
         <a href="#contact" class="btn btn-primary js-zayavka">Обсудить проект</a>
-        <a href="#references" class="btn btn-ghost">Смотреть работы</a>
+        <a href="#references" class="btn btn-ghost" id="heroLink">Смотреть работы</a>
       </div>
       <div class="hero-proof" aria-label="Преимущества">
         <span>Гарантия 24 месяца</span>
@@ -205,8 +205,13 @@
         <span>Поставка по России</span>
       </div>
     </div>
-    <div class="hero-media">
-      <picture><source srcset="img/ref-lineup.webp" type="image/webp"><img src="img/ref-lineup.jpg" alt="Ряд шкафов управления производства Ермак" width="1248" height="936" fetchpriority="high"></picture>
+    <div class="hero-media" id="heroMedia">
+      <picture><source id="heroSource" srcset="img/ref-lineup.webp" type="image/webp"><img id="heroImage" src="img/ref-lineup.jpg" alt="Ряд шкафов управления производства Ермак" width="1248" height="936" fetchpriority="high"></picture>
+      <div class="hero-slider-controls" aria-label="Переключение услуг">
+        <button type="button" class="hero-arrow" id="heroPrev" aria-label="Предыдущая услуга">←</button>
+        <div class="hero-dots" id="heroDots"></div>
+        <button type="button" class="hero-arrow" id="heroNext" aria-label="Следующая услуга">→</button>
+      </div>
     </div>
   </div>
 </section>
@@ -226,7 +231,7 @@
     <div class="eyebrow reveal">Услуги и производство</div>
     <h2 class="reveal">Что поставляем</h2>
     <p class="lead reveal">Подбираем, изготавливаем и поставляем под вашу задачу — от шкафов автоматизации до блочно-модульных контейнеров и металлообработки. Собственное производство полного цикла.</p>
-    <div class="grid cols-3 reveal">
+    <div class="grid cols-3 services-grid reveal">
       <div class="card">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="13" y1="8" x2="17" y2="8"/><line x1="13" y1="12" x2="17" y2="12"/><line x1="13" y1="16" x2="17" y2="16"/></svg></div>
         <h3>Шкафы управления</h3>
@@ -293,7 +298,7 @@
     <h2 class="reveal">Есть в наличии на производстве</h2>
     <p class="lead reveal">Не нужно ждать разработки с нуля — 16 типоразмеров с фиксированной ценой, готовы к отгрузке.</p>
     <div class="teaser reveal">
-      <div class="teaser-img"><picture><source srcset="img/tovar-control-gl.webp" type="image/webp"><img src="img/tovar-control-gl.png" alt="Шкаф управления водоснабжения Control GL" loading="lazy"></picture></div>
+      <div class="teaser-img"><picture><source srcset="img/tovar-control-gl.webp" type="image/webp"><img src="img/tovar-control-gl.png" alt="Шкаф управления водоснабжения Control GL" loading="lazy" decoding="async" width="900" height="1338"></picture></div>
       <div>
         <h3>Шкаф управления водоснабжения Control GL</h3>
         <div class="tsub">Повышение и поддержание давления воды в водоснабжении дома или объекта — управление двумя или тремя насосами мощностью 0,75–15 кВт.</div>
@@ -527,7 +532,7 @@
     <div class="prose reveal">
       <p>«Ермак Инжиниринг» — собственное производство шкафов автоматизации и электрощитов в Ростове-на-Дону. Проектируем, собираем и поставляем шкафы управления (ШУ), щиты автоматики, вводно-распределительные устройства (ВРУ), шкафы АВР и частотно-регулируемого привода (ЧРП), а также АСУ ТП на базе промышленных ПЛК с диспетчеризацией и SCADA.</p>
       <p>Изготавливаем оборудование под конкретную задачу: управление насосными станциями, приточно-вытяжной вентиляцией и системами ОВиК, конвейерами, освещением, автоматику индивидуальных тепловых пунктов (ИТП). Помимо электрощитов производим блочно-модульные контейнеры (БМК) для размещения оборудования и выполняем металлообработку — от корпусов и рам до готовых металлоконструкций с порошковой окраской.</p>
-      <p>Офис и производство находятся в Ростове-на-Дону: приём заявок и переговоры — на улице Вавилова, 62В, сборочный цех — в селе Султан-Салы Мясниковского района. Второй офис работает в Ростове-на-Дону на улице Просвещения, 155А. Работаем с объектами в Ростове-на-Дону, Новочеркасске и по всей Ростовской области, поставляем шкафы по всей России, при необходимости выезжаем на монтаж и пусконаладку. На каждое изделие предоставляем схемы, спецификации и протоколы испытаний, используем качественную элементную базу ведущих производителей и даём заводскую гарантию 24 месяца. Опишите задачу или пришлите опросный лист — подберём решение и рассчитаем стоимость.</p>
+      <p>Офис находится в Ростове-на-Дону на улице Вавилова, 62В, сборочный цех — в селе Султан-Салы Мясниковского района. Второй офис работает в Новочеркасске на улице Просвещения, 155А. Работаем с объектами в Ростове-на-Дону, Новочеркасске и по всей Ростовской области, поставляем шкафы по всей России, при необходимости выезжаем на монтаж и пусконаладку. На каждое изделие предоставляем схемы, спецификации и протоколы испытаний, используем качественную элементную базу ведущих производителей и даём заводскую гарантию 24 месяца. Опишите задачу или пришлите опросный лист — подберём решение и рассчитаем стоимость.</p>
     </div>
   </div>
 </section>
@@ -890,6 +895,108 @@
   document.getElementById('qrPrimary').addEventListener('click', function(){
     if(typeof ym !== 'undefined') ym(110042865, 'reachGoal', 'quiz_lead', {task: answers.task});
   });
+})();
+</script>
+
+<!-- Слайдер направлений на первом экране -->
+<script>
+(function(){
+  const hero = document.querySelector('.hero');
+  const copy = hero && hero.querySelector('.hero-copy');
+  const media = document.getElementById('heroMedia');
+  const title = document.getElementById('heroTitle');
+  const text = document.getElementById('heroText');
+  const link = document.getElementById('heroLink');
+  const image = document.getElementById('heroImage');
+  const source = document.getElementById('heroSource');
+  const dotsBox = document.getElementById('heroDots');
+  if(!hero || !copy || !media || !title || !text || !link || !image || !dotsBox) return;
+
+  const slides = [
+    {
+      title:'Шкафы автоматизации <span>под ключ</span> — от подбора до объекта',
+      text:'Проектируем и собираем шкафы управления и АСУ ТП любой сложности. Заводское производство, качественная элементная база и гарантия 24 месяца.',
+      href:'shkafy-upravleniya/', label:'Подробнее о шкафах',
+      webp:'img/ref-lineup.webp', jpg:'img/ref-lineup.jpg',
+      alt:'Ряд шкафов автоматизации производства Ермак'
+    },
+    {
+      title:'Насосные станции <span>под задачу</span> — управление и автоматика',
+      text:'Комплектуем насосные станции шкафами управления, частотными преобразователями и защитой. Решения для водоснабжения и пожаротушения.',
+      href:'nasosnye-stancii/', label:'Насосные станции',
+      webp:'img/nasosnaya-stantsiya-vertikalnye-nasosy.webp', jpg:'img/nasosnaya-stantsiya-vertikalnye-nasosy.jpg',
+      alt:'Насосная станция с вертикальными насосами производства Ермак'
+    },
+    {
+      title:'Блочно-модульные контейнеры <span>под ключ</span>',
+      text:'Изготавливаем БК с инженерными системами, насосным оборудованием и автоматикой. Сборка, испытания и подготовка к работе на объекте.',
+      href:'bmk/', label:'Подробнее о БК',
+      webp:'img/bmk-gradirni-hero.webp', jpg:'img/bmk-gradirni-hero.jpg',
+      alt:'Блочно-модульный контейнер производства Ермак'
+    },
+    {
+      title:'Обработка металла <span>для ваших проектов</span>',
+      text:'Изготавливаем корпуса, панели и металлические детали по чертежам. Точная обработка, аккуратная сборка и контроль качества.',
+      href:'metalloobrabotka/', label:'Обработка металла',
+      webp:'img/lazernaya-rezka-lista.webp', jpg:'img/lazernaya-rezka-lista.jpg',
+      alt:'Лазерный станок для резки листового металла'
+    }
+  ];
+
+  let current = 0, timer, touchStart = 0;
+  slides.slice(1).forEach(function(s){
+    const preload = new Image();
+    preload.src = s.webp;
+  });
+  slides.forEach(function(_, i){
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Показать услугу ' + (i + 1));
+    dot.addEventListener('click', function(){ show(i, true); });
+    dotsBox.appendChild(dot);
+  });
+  const dots = Array.from(dotsBox.children);
+
+  function show(index, manual){
+    const next = (index + slides.length) % slides.length;
+    if(next === current && manual) { restart(); return; }
+    copy.classList.add('is-changing');
+    media.classList.add('is-changing');
+    window.setTimeout(function(){
+      const s = slides[next];
+      title.innerHTML = s.title;
+      text.textContent = s.text;
+      link.href = s.href;
+      link.textContent = s.label;
+      source.srcset = s.webp;
+      image.src = s.jpg;
+      image.alt = s.alt;
+      dots.forEach(function(dot, i){ dot.classList.toggle('active', i === next); });
+      current = next;
+      requestAnimationFrame(function(){
+        copy.classList.remove('is-changing');
+        media.classList.remove('is-changing');
+      });
+    }, 220);
+    if(manual) restart();
+  }
+  function restart(){
+    clearInterval(timer);
+    timer = setInterval(function(){ show(current + 1, false); }, 6500);
+  }
+  document.getElementById('heroPrev').addEventListener('click', function(){ show(current - 1, true); });
+  document.getElementById('heroNext').addEventListener('click', function(){ show(current + 1, true); });
+  hero.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  hero.addEventListener('mouseleave', restart);
+  hero.addEventListener('focusin', function(){ clearInterval(timer); });
+  hero.addEventListener('focusout', restart);
+  media.addEventListener('touchstart', function(e){ touchStart = e.changedTouches[0].clientX; }, {passive:true});
+  media.addEventListener('touchend', function(e){
+    const distance = e.changedTouches[0].clientX - touchStart;
+    if(Math.abs(distance) > 45) show(current + (distance < 0 ? 1 : -1), true);
+  }, {passive:true});
+  restart();
 })();
 </script>
 
