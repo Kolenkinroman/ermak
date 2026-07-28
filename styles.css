@@ -42,7 +42,7 @@
     font-size:0;color:transparent;
   }
   .logo::before{
-    content:"";display:block;width:92px;height:66px;flex:0 0 92px;
+    content:"";display:block;width:92px;height:58px;flex:0 0 92px;
     background:url("img/logo-new.svg") center top/92px 92px no-repeat;
   }
   .logo .mark{display:none}
@@ -220,7 +220,7 @@
     .stats{gap:28px}
     .nav{height:72px;gap:10px}
     .logo{width:64px;height:62px;flex-basis:64px}
-    .logo::before{width:58px;height:42px;flex-basis:58px;background-size:58px 58px}
+    .logo::before{width:58px;height:36px;flex-basis:58px;background-size:58px 58px}
     .nav .cta{padding:9px 12px;font-size:12px;margin-left:auto}
     .burger{padding:8px 0}
     .nav-links.open{top:72px}
